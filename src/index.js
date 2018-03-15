@@ -42,7 +42,7 @@ client.on('connect', () => {
     ) {
       try {
         payload = JSON.parse(payload)
-      } catch(err) {
+      } catch (err) {
         console.log(chalk.red(`Invalid JSON: ${payload}`))
         process.exit(0)
       }
