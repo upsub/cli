@@ -1,6 +1,6 @@
 {
   "name": "upsub",
-  "description": "",
+  "description": "Command line interface for UpSub",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
