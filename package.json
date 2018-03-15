@@ -1,7 +1,7 @@
 {
   "name": "upsub",
   "description": "Command line interface for UpSub",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "test": "npm run lint && jest --coverage",
