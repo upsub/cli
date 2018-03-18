@@ -28,7 +28,15 @@ const cli = meow(`
   }
 })
 
+if (
+  cli.flags.host.includes('wss://') &&
+  (cli.flags.port === '4400' || cli.flags.port === '80')
+) {
+  cli.flags.port = 443
+}
+
 const client = new Client(cli.flags.host + ':' + cli.flags.port)
+
 client.on('connect', () => {
   if (cli.input.length > 1) {
     const [channel, ...text] = cli.input
