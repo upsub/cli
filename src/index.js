@@ -13,6 +13,7 @@ const cli = meow(`
   Options
     --host, -h  host
     --port, -p  port
+    --raw,  -r  send a raw message to the dispatcher
 `, {
   flags: {
     host: {
@@ -24,6 +25,11 @@ const cli = meow(`
       type: 'string',
       default: process.env.UPSUB_PORT || '4400',
       alias: 'p'
+    },
+    raw: {
+      type: 'boolean',
+      default: false,
+      alias: 'r'
     }
   }
 })
@@ -38,6 +44,18 @@ if (
 const client = new Client(cli.flags.host + ':' + cli.flags.port)
 
 client.on('connect', () => {
+  if (cli.flags.raw) {
+    let msg = null
+    try {
+      msg = Message.decode(cli.input[0])
+    } catch (err) {
+      console.log(chalk.red(`Invalid Message`))
+      process.exit(1)
+    }
+    client._sendMessage(msg)
+    process.exit(0)
+  }
+
   if (cli.input.length > 1) {
     const [channel, ...text] = cli.input
     let payload = text.join(' ')
@@ -52,7 +70,7 @@ client.on('connect', () => {
         payload = JSON.parse(payload)
       } catch (err) {
         console.log(chalk.red(`Invalid JSON: ${payload}`))
-        process.exit(0)
+        process.exit(1)
       }
     }
 
