@@ -26,7 +26,14 @@
     "LICENSE"
   ],
   "keywords": [
-    "module"
+    "upsub",
+    "cli",
+    "message-bus",
+    "realtime",
+    "async",
+    "request",
+    "response",
+    "websocket"
   ],
   "author": {
     "name": "Frederik Kvartborg Albertsen",
