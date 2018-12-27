@@ -54,7 +54,7 @@
     "babel-cli": "^6.24.1",
     "babel-jest": "^21.0.2",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
-    "coveralls": "^2.13.1",
+    "coveralls": "^3.0.2",
     "jest": "^21.1.0",
     "snazzy": "^7.0.0",
     "standard": "^10.0.2"
